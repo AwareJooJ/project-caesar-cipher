@@ -20,12 +20,12 @@ describe Encryptor do
 
     it "works with high positive numbers" do
       string = "Hello World"
-      expect(encrypt_messages.encrypt(string, 55)).to eq("Mjqqt Btwqi")
+      expect(encrypt_messages.encrypt(string, 55)).to eq("Khoor Zruog")
     end
 
     it "works with high negative numbers" do
       string = "Hello World"
-      expect(encrypt_messages.encrypt(string, -55)).to eq("Mjqqt Btwqi")
+      expect(encrypt_messages.encrypt(string, -55)).to eq("Ebiil Tloi")
     end
   end
 end

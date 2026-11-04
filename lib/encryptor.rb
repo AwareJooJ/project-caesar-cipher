@@ -1,33 +1,34 @@
+# Main class for the encryptor
 class Encryptor
-  $alphabet = %w[
+  ALPHABET = %w[
     a b c d e f g h i j k l m
     n o p q r s t u v w x y z
   ]
 
   def encrypt(phrase, key = 5)
-    string = phrase
-    array = phrase.split("")
+    array = phrase.chars # Making an array of the phrase so I can iterate through it
 
     new_arr = array.map do |letter| # Making a new array just in case I need to refer back to the original Array
-      if $alphabet.include?(letter)
-        result = $alphabet.index(letter) + key
+      new_key = key % 26 # Making sure the key is within the range of the alphabet
+      if ALPHABET.include?(letter)
+        result = ALPHABET.index(letter) + new_key
         if result > 26 # Making it go back to the first index
-          $alphabet[result - 26] # Ex: 28-26 = 2, so it goes back to the Third index
+          ALPHABET[result - 26] # Ex: 28-26 = 2, so it goes back to the Third index
         else
-          $alphabet[result]
+          ALPHABET[result]
         end
-      elsif $alphabet.map(&:upcase).include?(letter) # Same logic but in case the letter is upcase
-        result = $alphabet.index(letter.downcase) + key
+      elsif ALPHABET.map(&:upcase).include?(letter) # Same logic but in case the letter is upcase
+        result = ALPHABET.index(letter.downcase) + new_key
         if result > 26
-          $alphabet[result - 26].upcase
+          ALPHABET[result - 26].upcase
         else
-          $alphabet[result].upcase
+          ALPHABET[result].upcase
         end
       else
         letter
       end
     end
 
-    string = new_arr.join("") # Joined together so it returns a string
+    new_arr.join() # Joined together so it returns a string
   end
 end
